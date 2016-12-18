@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F74EA973-D164-4AB3-9E10-5626B78FFE63}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VotingApp</RootNamespace>
+    <AssemblyName>VotingApp</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Adapters\OptionAdapter.cs" />
+    <Compile Include="Adapters\VotingAdapter.cs" />
+    <Compile Include="CommandAPI\ICommand.cs" />
+    <Compile Include="CommandAPI\IUndoable.cs" />
+    <Compile Include="Commands\CommandProcessor.cs" />
+    <Compile Include="CommandAPI\ICommandProcessor.cs" />
+    <Compile Include="Commands\UndoCommand.cs" />
+    <Compile Include="ConsoleLineInterface\CLIDialog.cs" />
+    <Compile Include="ConsoleLineInterface\CLIFactory.cs" />
+    <Compile Include="ConsoleLineInterface\CLIDataView.cs" />
+    <Compile Include="ContainerUtility.cs" />
+    <Compile Include="ControllerAPI\CLIController.cs" />
+    <Compile Include="ControllerAPI\IController.cs" />
+    <Compile Include="ControllerAPI\GUIController.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControllerAPI\GUIController.Designer.cs">
+      <DependentUpon>GUIController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicalUserInterface\GUIDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphicalUserInterface\GUIDialog.Designer.cs">
+      <DependentUpon>GUIDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicalUserInterface\GUIFactory.cs" />
+    <Compile Include="GraphicalUserInterface\GUIDataView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphicalUserInterface\GUIDataView.Designer.cs">
+      <DependentUpon>GUIDataView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\Constants.cs" />
+    <Compile Include="ParliamentaryPoll\ParliamentaryMemento.cs" />
+    <Compile Include="ParliamentaryPoll\ParliamentaryPollFactory.cs" />
+    <Compile Include="ParliamentaryPoll\ParliamentaryVoting.cs" />
+    <Compile Include="ParliamentaryPoll\PartyOption.cs" />
+    <Compile Include="PollCommands\AddOptionCommand.cs" />
+    <Compile Include="PollCommands\AddVotesCommand.cs" />
+    <Compile Include="PollCommands\CreatePollCommand.cs" />
+    <Compile Include="PollCommands\EndVotingCommand.cs" />
+    <Compile Include="PollCommands\ShowOptionCommand.cs" />
+    <Compile Include="PollCommands\ShowVotingCommand.cs" />
+    <Compile Include="PollCommands\StartVotingCommand.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReferendumPoll\Memento.cs" />
+    <Compile Include="ReferendumPoll\ReferendumFactory.cs" />
+    <Compile Include="ReferendumPoll\ReferendumVoting.cs" />
+    <Compile Include="ReferendumPoll\SimpleOption.cs" />
+    <Compile Include="Repositories\OptionRepository.cs" />
+    <Compile Include="Repositories\VotingRepository.cs" />
+    <Compile Include="UserInterfaceAPI\IUIDialog.cs" />
+    <Compile Include="UserInterfaceAPI\IUIFactory.cs" />
+    <Compile Include="UserInterfaceAPI\IUIDataView.cs" />
+    <Compile Include="VotingSystemAPI\Memento.cs" />
+    <Compile Include="VotingSystemAPI\NotifyData.cs" />
+    <Compile Include="VotingSystemAPI\Observer.cs" />
+    <Compile Include="VotingSystemAPI\Option.cs" />
+    <Compile Include="VotingSystemAPI\IPollFactory.cs" />
+    <Compile Include="VotingSystemAPI\Voting.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GraphicalUserInterface\GUIDialog.resx">
+      <DependentUpon>GUIDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphicalUserInterface\GUIDataView.resx">
+      <DependentUpon>GUIDataView.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
